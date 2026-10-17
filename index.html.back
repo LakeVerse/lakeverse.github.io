@@ -1,0 +1,42 @@
+---
+layout: default
+---
+<section class="hero">
+  <h1>{{ site.title }}</h1>
+  <p class="lede">{{ site.tagline }}</p>
+  <p class="intro">I lead data platform engineering and build in the open on the side: lakehouse tooling,
+  Kubernetes-native data infrastructure, and data that LLM agents can use safely.
+  This site tracks what's shipped, what's in progress, and what's next.</p>
+</section>
+
+<section id="projects">
+  {% for s in site.statuses %}
+    {% assign group = site.projects | where: "status", s.key | sort: "order" %}
+    {% if group.size > 0 %}
+    <h2 class="group-title">{{ s.label }}</h2>
+    <div class="grid">
+      {% for p in group %}
+      <a class="card" href="{{ p.url | relative_url }}">
+        <span class="status status-{{ p.status }}">{{ s.label }}</span>
+        <h3>{{ p.title }}</h3>
+        <p>{{ p.summary }}</p>
+        <div class="tags">
+          {% for t in p.stack limit: 5 %}<span class="tag">{{ t }}</span>{% endfor %}
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+    {% endif %}
+  {% endfor %}
+</section>
+
+{% if site.posts.size > 0 %}
+<section class="recent">
+  <h2 class="group-title">Recent writing</h2>
+  <ul class="post-list">
+    {% for post in site.posts limit: 3 %}
+    <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a> <span class="date">{{ post.date | date: "%b %Y" }}</span></li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}

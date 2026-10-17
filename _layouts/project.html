@@ -1,0 +1,32 @@
+---
+layout: default
+---
+{% assign status = site.statuses | where: "key", page.status | first %}
+<article class="project-detail">
+  <a class="project-back" href="{{ '/' | relative_url }}#projects"><span aria-hidden="true">←</span> All projects</a>
+
+  <header class="project-hero">
+    <div class="project-kicker">
+      <span>Lakehouse engineering</span>
+      {% if status %}<span class="project-status project-status-{{ page.status }}"><span aria-hidden="true"></span>{{ status.label }}</span>{% endif %}
+    </div>
+    <h1>{{ page.title }}</h1>
+    <p class="project-summary">{{ page.summary }}</p>
+
+    {% if page.stack %}
+      <div class="project-stack" aria-label="Technology stack">
+        {% for t in page.stack %}<span>{{ t }}</span>{% endfor %}
+      </div>
+    {% endif %}
+
+    {% if page.repo and page.repo != "" %}
+      <a class="project-repo" href="{{ page.repo }}" target="_blank" rel="noopener noreferrer">Explore the code <span aria-hidden="true">↗</span></a>
+    {% endif %}
+  </header>
+
+  <div class="project-content">
+    <div class="prose">
+      {{ content }}
+    </div>
+  </div>
+</article>

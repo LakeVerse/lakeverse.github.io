@@ -1,0 +1,17 @@
+---
+layout: default
+title: Writing
+permalink: /writing/
+---
+<h1>Writing</h1>
+<p class="lede">Notes on data platforms, lakehouses and agentic AI — written as I learn and build.</p>
+
+{% if site.posts.size > 0 %}
+<ul class="post-list">
+  {% for post in site.posts %}
+  <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a> <span class="date">{{ post.date | date: "%b %-d, %Y" }}</span></li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>First posts coming soon.</p>
+{% endif %}

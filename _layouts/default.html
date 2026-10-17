@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
+  <meta name="description" content="{{ page.summary | default: site.tagline | strip_html | escape }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="{{ '/assets/favicon.svg' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/lakeverse.css' | relative_url }}">
+</head>
+<body{% if page.layout == "project" %} class="project-page"{% endif %}>
+  {% if page.url != "/" %}
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+        <nav>
+          <a href="{{ '/' | relative_url }}#projects">Projects</a>
+          <a href="{{ '/writing/' | relative_url }}">Writing</a>
+          <a href="{{ '/about/' | relative_url }}">About</a>
+        </nav>
+      </div>
+    </header>
+  {% endif %}
+
+  <main class="wrap">
+    {{ content }}
+  </main>
+
+  {% if page.url != "/" %}
+    <footer class="site-footer">
+      <div class="wrap">
+        <span>© {{ site.time | date: "%Y" }} {{ site.author }}</span>
+        <span class="links">
+          {% if site.github_username != "" %}<a href="https://github.com/{{ site.github_username }}">GitHub</a>{% endif %}
+          {% if site.linkedin_username != "" %}<a href="https://www.linkedin.com/in/{{ site.linkedin_username }}">LinkedIn</a>{% endif %}
+          {% if site.email != "" %}<a href="mailto:{{ site.email }}">Email</a>{% endif %}
+        </span>
+      </div>
+    </footer>
+  {% endif %}
+</body>
+</html>

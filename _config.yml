@@ -1,0 +1,45 @@
+# ---------------------------------------------------------------
+# Site settings — change these when you've picked a name.
+# ---------------------------------------------------------------
+title: "LakeVerse"
+tagline: "Data platforms, lakehouses and agent-ready data — what I've built and what I'm building."
+author: "Satya"
+email: ""                          # optional, shown in footer if set
+github_username: ""                # e.g. "your-handle"
+linkedin_username: "satyak2024"              # e.g. "your-handle"
+
+# If the repo is named <username>.github.io, leave baseurl empty.
+# If it's a project repo (e.g. github.com/you/portfolio), set baseurl: "/portfolio"
+url: ""
+baseurl: ""
+
+# ---------------------------------------------------------------
+# Build settings (all GitHub Pages–supported, no custom plugins)
+# ---------------------------------------------------------------
+markdown: kramdown
+permalink: /writing/:year/:title/
+
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name/
+
+defaults:
+  - scope: { path: "", type: projects }
+    values: { layout: project }
+  - scope: { path: "", type: posts }
+    values: { layout: post }
+
+# Order and labels for project status groups on the home page
+statuses:
+  - key: building
+    label: "Building now"
+  - key: shipped
+    label: "Shipped"
+ 
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor

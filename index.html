@@ -1,0 +1,254 @@
+---
+layout: default
+title: Home
+---
+
+<div class="lakeverse-home">
+  <style>
+    .lakeverse-home {
+      --lv-bg: #07111f;
+      --lv-panel: rgba(15, 29, 49, .78);
+      --lv-panel-strong: #10213a;
+      --lv-line: rgba(148, 179, 215, .18);
+      --lv-text: #edf4ff;
+      --lv-muted: #a7b8ce;
+      --lv-blue: #79b8ff;
+      --lv-cyan: #6fe4e8;
+      --lv-green: #8de0b0;
+      color: var(--lv-text);
+      background:
+        radial-gradient(ellipse at 82% 0%, rgba(44, 112, 191, .19), transparent 34rem),
+        radial-gradient(ellipse at 0% 22%, rgba(42, 190, 196, .08), transparent 28rem),
+        var(--lv-bg);
+      border-radius: 24px;
+      padding: clamp(1rem, 3vw, 2.4rem);
+      margin: 0 auto;
+      max-width: 1200px;
+      font-family: inherit;
+      line-height: 1.6;
+    }
+    .lakeverse-home * { box-sizing: border-box; }
+    .lakeverse-home a { color: inherit; text-decoration: none; }
+    .lakeverse-home a:focus-visible { outline: 2px solid var(--lv-cyan); outline-offset: 4px; }
+    .lakeverse-home .lv-nav {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1rem; padding-bottom: 2.8rem;
+    }
+    .lakeverse-home .lv-brand { display: flex; align-items: center; gap: .75rem; font-weight: 750; letter-spacing: -.03em; }
+    .lakeverse-home .lv-mark {
+      display: grid; place-items: center; width: 42px; height: 42px; border-radius: 14px;
+      color: #07111f; font-weight: 900; background: linear-gradient(135deg, var(--lv-cyan), var(--lv-blue));
+      box-shadow: 0 0 32px rgba(111, 228, 232, .15);
+    }
+    .lakeverse-home .lv-navlinks { display: flex; gap: 1.2rem; flex-wrap: wrap; color: var(--lv-muted); font-size: .9rem; }
+    .lakeverse-home .lv-navlinks a:hover, .lakeverse-home .lv-textlink:hover { color: var(--lv-cyan); }
+    .lakeverse-home .lv-hero {
+      position: relative; overflow: hidden; padding: clamp(1.5rem, 5vw, 4rem) 0 3.5rem;
+      border-bottom: 1px solid var(--lv-line);
+    }
+    .lakeverse-home .lv-eyebrow {
+      display: inline-flex; align-items: center; gap: .55rem; color: var(--lv-cyan);
+      text-transform: uppercase; letter-spacing: .16em; font-size: .72rem; font-weight: 800;
+    }
+    .lakeverse-home .lv-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--lv-green); box-shadow: 0 0 12px rgba(141,224,176,.8); }
+    .lakeverse-home h1 {
+      max-width: 850px; margin: 1rem 0; font-size: clamp(2.7rem, 7vw, 5.8rem);
+      line-height: .99; letter-spacing: -.065em; color: var(--lv-text); font-weight: 800;
+    }
+    .lakeverse-home .lv-gradient-text { background: linear-gradient(100deg, #f2f7ff 8%, var(--lv-blue) 52%, var(--lv-cyan)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .lakeverse-home .lv-lede { max-width: 700px; color: var(--lv-muted); font-size: clamp(1rem, 2vw, 1.2rem); margin: 1.2rem 0 1.6rem; }
+    .lakeverse-home .lv-actions { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 1.7rem; }
+    .lakeverse-home .lv-button { display: inline-flex; align-items: center; justify-content: center; padding: .78rem 1.05rem; border-radius: 12px; font-weight: 750; font-size: .9rem; border: 1px solid var(--lv-line); }
+    .lakeverse-home .lv-button-primary { color: #07111f; background: linear-gradient(120deg, var(--lv-cyan), var(--lv-blue)); border-color: transparent; }
+    .lakeverse-home .lv-button-secondary { color: var(--lv-text); background: rgba(255,255,255,.025); }
+    .lakeverse-home .lv-orbit {
+      position: absolute; width: min(34vw, 360px); aspect-ratio: 1; right: 1%; top: 12%;
+      border: 1px solid rgba(121,184,255,.16); border-radius: 50%; pointer-events: none;
+      background: radial-gradient(circle, rgba(111,228,232,.08), transparent 62%);
+    }
+    .lakeverse-home .lv-orbit:before, .lakeverse-home .lv-orbit:after { content: ""; position: absolute; inset: 12%; border: 1px solid rgba(111,228,232,.18); border-radius: 50%; transform: rotate(-32deg) scaleX(.48); }
+    .lakeverse-home .lv-orbit:after { inset: 2%; transform: rotate(45deg) scaleX(.68); border-color: rgba(121,184,255,.2); }
+    .lakeverse-home .lv-orbit-core { position: absolute; width: 12px; height: 12px; border-radius: 50%; background: var(--lv-cyan); top: 22%; left: 23%; box-shadow: 0 0 25px var(--lv-cyan); }
+    .lakeverse-home .lv-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .8rem; margin: 1.8rem 0 3.5rem; }
+    .lakeverse-home .lv-stat { padding: 1rem 1.1rem; border: 1px solid var(--lv-line); border-radius: 15px; background: rgba(255,255,255,.025); }
+    .lakeverse-home .lv-stat strong { display: block; font-size: 1.05rem; color: var(--lv-text); }
+    .lakeverse-home .lv-stat span { color: var(--lv-muted); font-size: .82rem; }
+    .lakeverse-home .lv-section { padding: 1.3rem 0 2.4rem; }
+    .lakeverse-home .lv-section-head { display: flex; align-items: end; justify-content: space-between; gap: 1rem; margin-bottom: 1.2rem; }
+    .lakeverse-home .lv-kicker { color: var(--lv-cyan); text-transform: uppercase; letter-spacing: .14em; font-size: .7rem; font-weight: 800; }
+    .lakeverse-home h2 { color: var(--lv-text); font-size: clamp(1.55rem, 3vw, 2rem); line-height: 1.2; letter-spacing: -.035em; margin: .25rem 0 0; }
+    .lakeverse-home h3 { color: var(--lv-text); font-size: 1.08rem; letter-spacing: -.02em; margin: .8rem 0 .45rem; }
+    .lakeverse-home .lv-muted { color: var(--lv-muted); }
+    .lakeverse-home .lv-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+    .lakeverse-home .lv-card {
+      display: flex; flex-direction: column; min-height: 230px; padding: 1.25rem;
+      border: 1px solid var(--lv-line); border-radius: 18px; background: linear-gradient(145deg, var(--lv-panel), rgba(9,20,35,.8));
+      transition: transform .18s ease, border-color .18s ease, background .18s ease;
+    }
+    .lakeverse-home a.lv-card:hover { transform: translateY(-3px); border-color: rgba(111,228,232,.45); background: linear-gradient(145deg, rgba(18,43,68,.95), rgba(9,20,35,.9)); }
+    .lakeverse-home .lv-card-top { display: flex; justify-content: space-between; align-items: center; gap: .7rem; }
+    .lakeverse-home .lv-status { border-radius: 999px; padding: .23rem .55rem; border: 1px solid var(--lv-line); color: var(--lv-cyan); font-size: .68rem; font-weight: 800; letter-spacing: .03em; }
+    .lakeverse-home .lv-status-shipped, .lakeverse-home .lv-status-live, .lakeverse-home .lv-status-complete { color: var(--lv-green); }
+    .lakeverse-home .lv-status-building, .lakeverse-home .lv-status-in-progress { color: #ffd58a; }
+    .lakeverse-home .lv-card p { margin: 0; color: var(--lv-muted); font-size: .9rem; }
+    .lakeverse-home .lv-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: auto; padding-top: 1.1rem; }
+    .lakeverse-home .lv-tag { color: #c4d4e9; background: rgba(121,184,255,.08); border: 1px solid rgba(121,184,255,.13); border-radius: 7px; padding: .2rem .45rem; font-size: .7rem; }
+    .lakeverse-home .lv-focus-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+    .lakeverse-home .lv-focus { padding: 1.2rem; border-left: 2px solid var(--lv-cyan); background: rgba(255,255,255,.025); border-radius: 0 14px 14px 0; }
+    .lakeverse-home .lv-focus p { color: var(--lv-muted); margin: .4rem 0 0; font-size: .9rem; }
+    .lakeverse-home .lv-writing { border-top: 1px solid var(--lv-line); }
+    .lakeverse-home .lv-post { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--lv-line); }
+    .lakeverse-home .lv-post a { font-weight: 700; }
+    .lakeverse-home .lv-post time { color: var(--lv-muted); font-size: .82rem; white-space: nowrap; }
+    .lakeverse-home .lv-about {
+      display: grid; grid-template-columns: 1.35fr .65fr; gap: 1.5rem; padding: clamp(1.3rem, 3vw, 2rem);
+      border: 1px solid var(--lv-line); border-radius: 20px; background: linear-gradient(120deg, rgba(17,39,64,.85), rgba(12,26,44,.65));
+    }
+    .lakeverse-home .lv-about p { color: var(--lv-muted); margin-bottom: 0; }
+    .lakeverse-home .lv-links { display: flex; flex-direction: column; justify-content: center; gap: .65rem; }
+    .lakeverse-home .lv-textlink { color: var(--lv-blue); font-weight: 700; }
+    .lakeverse-home .lv-footer { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; color: var(--lv-muted); font-size: .78rem; padding-top: 2rem; }
+    @media (max-width: 800px) {
+      .lakeverse-home .lv-grid, .lakeverse-home .lv-focus-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .lakeverse-home .lv-orbit { opacity: .45; right: -9%; top: 5%; }
+      .lakeverse-home .lv-about { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px) {
+      .lakeverse-home { border-radius: 16px; padding: 1rem; }
+      .lakeverse-home .lv-nav { align-items: flex-start; flex-direction: column; padding-bottom: 1.6rem; }
+      .lakeverse-home .lv-navlinks { gap: .85rem; }
+      .lakeverse-home .lv-grid, .lakeverse-home .lv-focus-grid { grid-template-columns: 1fr; }
+      .lakeverse-home .lv-stats { grid-template-columns: 1fr; }
+      .lakeverse-home .lv-orbit { width: 220px; right: -26%; top: 16%; opacity: .25; }
+      .lakeverse-home .lv-post { align-items: flex-start; flex-direction: column; gap: .25rem; }
+      .lakeverse-home .lv-section-head { align-items: flex-start; flex-direction: column; }
+    }
+  </style>
+
+  <header class="lv-nav">
+    <a class="lv-brand" href="{{ '/' | relative_url }}" aria-label="{{ site.title }} home">
+      <span class="lv-mark">L</span>
+      <span>{{ site.title | default: "Lakeverse" }}</span>
+    </a>
+    <nav class="lv-navlinks" aria-label="Main navigation">
+      <a href="#projects">Projects</a>
+      <a href="#focus">Current focus</a>
+      <a href="#writing">Writing</a>
+      <a href="#about">About</a>
+    </nav>
+  </header>
+
+  <section class="lv-hero">
+    <div class="lv-orbit" aria-hidden="true"><span class="lv-orbit-core"></span></div>
+    <div class="lv-eyebrow"><span class="lv-dot"></span>{{ site.hero_eyebrow | default: "Independent engineering & open exploration" }}</div>
+    <h1>{{ site.hero_line_1 | default: "Building better" }}<br><span class="lv-gradient-text">{{ site.hero_line_2 | default: "data platforms." }}</span></h1>
+    <p class="lv-lede">{{ site.tagline | default: "Engineering tools, exploring platform architectures, and sharing what I learn along the way." }}</p>
+    {% if site.intro %}
+      <p class="lv-muted" style="max-width: 720px;">{{ site.intro }}</p>
+    {% endif %}
+    <div class="lv-actions">
+      <a class="lv-button lv-button-primary" href="#projects">Explore projects <span aria-hidden="true">&nbsp;↘</span></a>
+      {% if site.github_url and site.github_url != "" %}
+        <a class="lv-button lv-button-secondary" href="{{ site.github_url }}" target="_blank" rel="noopener noreferrer">View GitHub ↗</a>
+      {% endif %}
+    </div>
+  </section>
+
+  {% if site.highlights %}
+  <section class="lv-stats" aria-label="Highlights">
+    {% for item in site.highlights %}
+      <div class="lv-stat"><strong>{{ item.value }}</strong><span>{{ item.label }}</span></div>
+    {% endfor %}
+  </section>
+  {% endif %}
+
+  <section class="lv-section" id="projects">
+    <div class="lv-section-head">
+      <div><div class="lv-kicker">Selected work</div><h2>Projects & tools</h2></div>
+      {% if site.projects_page_url %}
+        <a class="lv-textlink" href="{{ site.projects_page_url | relative_url }}">All projects ↗</a>
+      {% endif %}
+    </div>
+
+    {% for s in site.statuses %}
+      {% assign group = site.projects | where: "status", s.key | sort: "order" %}
+      {% if group.size > 0 %}
+        <h3 style="margin: 1.5rem 0 .8rem;">{{ s.label }}</h3>
+        <div class="lv-grid" style="margin-bottom: 1.2rem;">
+          {% for p in group %}
+            <a class="lv-card" href="{% if p.external_url %}{{ p.external_url }}{% else %}{{ p.url | relative_url }}{% endif %}" {% if p.external_url %}target="_blank" rel="noopener noreferrer"{% endif %}>
+              <div class="lv-card-top">
+                <span class="lv-status lv-status-{{ p.status }}">{{ p.status_label | default: s.label }}</span>
+                {% if p.kind %}<span class="lv-muted" style="font-size:.72rem;">{{ p.kind }}</span>{% endif %}
+              </div>
+              <h3>{{ p.title }}</h3>
+              <p>{{ p.summary }}</p>
+              {% if p.stack %}
+                <div class="lv-tags">
+                  {% for t in p.stack limit: 5 %}<span class="lv-tag">{{ t }}</span>{% endfor %}
+                </div>
+              {% endif %}
+            </a>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endfor %}
+  </section>
+
+  {% if site.current_focus %}
+  <section class="lv-section" id="focus">
+    <div class="lv-section-head">
+      <div><div class="lv-kicker">On the workbench</div><h2>Current focus</h2></div>
+    </div>
+    <div class="lv-focus-grid">
+      {% for item in site.current_focus %}
+        <article class="lv-focus">
+          <div class="lv-kicker">{{ item.category | default: "In progress" }}</div>
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.description }}</p>
+          {% if item.url %}<p style="margin-top:.8rem;"><a class="lv-textlink" href="{{ item.url | relative_url }}">Follow along ↗</a></p>{% endif %}
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  {% assign recent_posts = site.posts | limit: 4 %}
+  {% if recent_posts.size > 0 %}
+  <section class="lv-section" id="writing">
+    <div class="lv-section-head">
+      <div><div class="lv-kicker">Notes from the build</div><h2>Recent writing</h2></div>
+      <a class="lv-textlink" href="{{ '/writing/' | relative_url }}">All writing ↗</a>
+    </div>
+    <div class="lv-writing">
+      {% for post in recent_posts %}
+        <div class="lv-post">
+          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %Y" }}</time>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  <section class="lv-section" id="about">
+    <div class="lv-about">
+      <div>
+        <div class="lv-kicker">About Lakeverse</div>
+        <h2>{{ site.about_heading | default: "Built in the open. Grounded in engineering." }}</h2>
+        <p>{{ site.about_text | default: "Lakeverse is a home for practical experiments in data platforms, lakehouse infrastructure, cloud engineering, and developer tooling. I share what I build, what I learn, and the trade-offs behind the decisions." }}</p>
+      </div>
+      <div class="lv-links">
+        {% if site.github_url %}<a class="lv-textlink" href="{{ site.github_url }}" target="_blank" rel="noopener noreferrer">GitHub ↗</a>{% endif %}
+        {% if site.linkedin_url %}<a class="lv-textlink" href="{{ site.linkedin_url }}" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>{% endif %}
+        {% if site.email %}<a class="lv-textlink" href="mailto:{{ site.email }}">Email ↗</a>{% endif %}
+        {% if site.contact_text %}<span class="lv-muted">{{ site.contact_text }}</span>{% endif %}
+      </div>
+    </div>
+  </section>
+
+  <footer class="lv-footer">
+    <span>© {{ site.time | date: "%Y" }} {{ site.title | default: "Lakeverse" }}</span>
+    <span>{{ site.footer_text | default: "Engineering notes from the lakehouse frontier." }}</span>
+  </footer>
+</div>
