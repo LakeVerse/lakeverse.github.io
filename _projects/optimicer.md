@@ -63,7 +63,7 @@ prove the compaction paid off.
 
 - **Catalog:** AWS Glue Data Catalog, developed first against an emulated AWS stack, then real AWS
 - **Compute:** Spark on Kubernetes (EKS) via the Spark Operator, launched per plan
-- **Probes and checks:** Trino SQL
+- **Probes and checks:** Spark SQL 
 - **Orchestration:** fits alongside Kestra, which runs the jobs that write to the tables
 - **State:** pluggable — Postgres or Iceberg, chosen by a config property
 
