@@ -69,7 +69,7 @@ prove the compaction paid off.
 
 ## Design choices worth calling out
 
-- **Standalone, not a platform takeover.** Studied Iceberg compaction libraries and kept the optimicer deliberately small, could work with any orchestrator and compute the platform might already have. 
+- **Standalone, not a platform takeover.** Studied Iceberg compaction libraries and kept the optimicer deliberately small, could work with any orchestrator and compute, the platform might already have. 
 - **Read-only first.** The probe layer is useful on its own and needs no write access, which makes it
   an easy yes for a platform team to try.
 - **Writer-aware timing over fixed schedules.** Using commit history instead of a data column or a cron guess means compaction adapts as pipelines change.
