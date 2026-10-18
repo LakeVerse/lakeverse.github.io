@@ -40,7 +40,7 @@ body {
 a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
-.wrap { max-width: 960px; margin: 0 auto; padding: 0 16px; }
+.wrap { width: 100%; margin: 0 auto; padding: 0 16px; }
 
 .site-header { border-bottom: 1px solid var(--line); }
 .site-header .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-top: 18px; padding-bottom: 18px; flex-wrap: wrap; }
