@@ -3,7 +3,7 @@ title: Iceberg Table Health & Compaction Advisor
 status: shipped
 order: 1
 summary: Keeps Iceberg tables fast and cheap without anyone babysitting them — it finds the partitions that are hurting, compacts just those, and stays out of the way of the jobs writing to them.
-stack: [Apache Iceberg, Spark Operator, Kubernetes, AWS Glue, Postgres, Trino, Kestra]
+stack: [Apache Iceberg, Spark Operator, Kubernetes, AWS Glue, Postgres, Spark, Kestra]
 repo: ""   # e.g. https://github.com/lakeverse/optimicer
 ---
 
@@ -22,7 +22,7 @@ it's safe."**
 
 ## What it does
 
-**Measures health, per partition.** Lightweight, read-only probes written in plain Trino SQL track
+**Measures health, per partition.** Lightweight, read-only probes written in plain Spark SQL track
 file counts and size distribution, manifest growth and snapshot age for every partition. Because the
 probes are SQL-only, they run against any catalog without installing anything on the platform — a
 safe first step even on a lakehouse with hundreds of tables nobody has documented.
@@ -32,7 +32,7 @@ partitions (or groups of partitions) by how much they're actually hurting and pr
 rewrite plan — plus manifest rewrites and snapshot expiry where they're due.
 
 **Compacts without getting in the way.** The advisor reads commit history from snapshot summaries
-(Trino query IDs) to learn when each table's writers are active, and schedules work in the quiet
+to learn when each table's writers are active, and schedules work in the quiet
 windows between them. Rewrites use Spark's `rewrite_data_files` with partial progress, so a large
 job commits as it goes instead of all-or-nothing — and readers never see a thing.
 
