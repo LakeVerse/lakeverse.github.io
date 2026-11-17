@@ -35,7 +35,7 @@ statuses:
   - key: building
     label: "Building now"
   - key: shipped
-    label: "Shipped"
+    label: "Built"
  
 
 exclude:
